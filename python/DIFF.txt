@@ -1,0 +1,35 @@
+Differential gene and transcript Expression Analysis of RNAseq
+This protocol is appropriate for RNAseq experiments on organisms with sequenced reference genomes.
+Purpose :
+RNAseq reveals the full repertoire of alternative splice isoforms in our transcriptome and sheds light on the rarest and most cell- and context-specific transcripts.
+Because # of reads produced from an RNA transcript = transcript’s abundance, read density can be used to measure transcript and gene expression.
+Limitations 
+TopHat and Cufflinks require a sequenced genome
+Overview of protocol 
+1.	Reads of each condition are mapped to the reference genome with TopHat. What are the conditions?
+2.	The resulting alignment files are provided to Cufflinks to generate a transcriptome assembly for each condition.
+3.	These assemblies are then merged together using the Cuffmerge utility. This merged assembly provides a uniform basis for calculating gene and transcript expression in each condition.
+4.	The reads and the merged assembly are fed to Cuffdiff, which calculates expression levels and tests the statistical significance of observed changes. It also performs an additional layer of differential analysis.
+a.	By grouping transcripts into biologically meaningful groups (such as transcripts that share the same transcription start site (TSS)), Cuffdiff identifies genes that are differentially regulated at the transcriptional or post-transcriptional level.
+
+
+
+
+
+
+
+
+Column number	Column name	Example	Description
+1	Tested id	XLOC_000001	A unique identifier describing the transcipt, gene, primary transcript, or CDS being tested
+2	gene	Lypla1	The gene_name(s) or gene_id(s) being tested
+3	locus	chr1:4797771-4835363	Genomic coordinates for easy browsing to the genes or transcripts being tested.
+4	sample 1	Liver	Label (or number if no labels provided) of the first sample being tested
+5	sample 2	Brain	Label (or number if no labels provided) of the second sample being tested
+6	Test status	NOTEST	Can be one of OK (test successful), NOTEST (not enough alignments for testing), LOWDATA (too complex or shallowly sequenced), HIDATA (too many fragments in locus), or FAIL, when an ill-conditioned covariance matrix or other numerical exception prevents testing.
+7	FPKMx	8.01089	FPKM of the gene in sample x
+8	FPKMy	8.551545	FPKM of the gene in sample y
+9	log2(FPKMy/FPKMx)	0.06531	The (base 2) log of the fold change y/x
+10	test stat	0.860902	The value of the test statistic used to compute significance of the observed change in FPKM
+11	p	value 0.389292	The uncorrected p-value of the test statistic
+12	q	value 0.985216	The FDR-adjusted p-value of the test statistic
+13	significant	no	Can be either “yes” or “no”, depending on whether p is greater then the FDR after Benjamini-Hochberg correction for multiple-testing

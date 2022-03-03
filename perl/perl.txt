@@ -1,0 +1,456 @@
+#!/usr/bin/perl
+
+print "we have cat dog torture \n  guess which animal ";
+
+$number=int(rand(3)+1);
+
+if ($number==1)
+{
+$animal="cat";
+}
+else if ($number==2)
+{
+$animal="dog";
+}
+else {
+$animal="torture";
+}
+
+print "enter your guess "
+$guess=<STDIN>;
+-------------------------------------
+
+
+#!/usr/bin/perl
+#2
+print "enter the file name first (read from )then enter the file write path ";
+
+$filename=<STDIN>;
+chomp($filename);
+$filewrite=<STDIN>;
+chomp($filewrite);
+
+
+if (-e $filename && (! -e $filewrite) ){
+open (MFILE , "$filename");
+@list=<MFILE>;
+close ( MFILE );
+open ( FILESTREAM ,">", $filewrite);
+print FILESTREAM @list ;
+close(FILESTREAM);
+}
+else 
+{
+print "either the file that you want to read doesn't exist or the file that you want to write is already exist with the same name   ";
+}
+
+----------------------------------------
+
+
+
+#!/usr/bin/perl 
+#3
+
+
+%hash1=("Lebanon " , "961" , "Syria ", "960" , "Turkey " , "963");
+
+%hash2= reverse %hash1 ;
+
+print "what do you want to enter the zip code or the country name if you want to search through zip code enter one else enter 2";
+$choice=<STDIN>;
+chomp $choice;
+
+if ($choice==1)
+{
+
+print "we have the following zips";
+
+for (keys %hash2)
+{ 
+print "$_ \n";
+}
+print "which code do you want to choose ";
+
+$zip=<STDIN>;
+chomp ($zip);
+print $hash2{$zip};
+
+}
+else 
+{
+
+print "we have the following country";
+
+for (keys %hash1)
+{ 
+print "$_ \n";
+}
+print "which code do you want to choose ";
+$country=<STDIN>;
+chomp ($country);
+print $hash1{$country};
+
+}
+
+
+--------------------------------------------------
+
+#!/usr/bin/perl
+#4
+
+
+@days=qw(Monday , Tuesday , Friday , hi);
+@result = grep /day/, @days ;
+
+foreach $x (@result)
+
+{
+print "$x \n";
+}
+
+----------------------------------------
+#!/usr/bin/perl
+#5
+
+
+print "enter a number (enter 13 if you want to exit)";
+$number=<STDIN>;
+
+while ($number!=13)
+{
+if ($number==9 || $number==18)
+{
+print "enter a number (enter 13 if you want to exit)";
+$number=<STDIN>;
+}
+else {
+$sum+=$number;
+print "enter a number (enter 13 if you want to exit)";
+$number=<STDIN>;
+}
+}
+
+print $sum;
+
+
+------------------------------------------------
+
+
+#!/usr/bin/perl
+#6
+
+
+
+$number=int(rand(100)+1);
+print "enter  a guess";
+$guess=<STDIN> ;
+chomp $guess ;
+
+if ($number==$guess)
+{
+print "you are the winner ";
+}
+
+elsif ($number>$guess)
+{
+print "what you enterd is less than the number \n";
+}
+else {
+
+print "what you enterd is greater than the number \n";
+}
+
+-------------------------------
+
+
+
+#!/usr/bin/perl
+#7
+
+
+@array=qw(1 2 3 4 5 6 7 8 9 10);
+
+foreach $x (@array)
+{
+if ($x%2==0)
+{
+@even=(@even,$x);
+
+}
+ if ($x%2!=0)
+{
+@odd=(@odd,$x);
+}
+}
+
+print "the even number are : \n";
+foreach $n (@even)
+{
+print "$n \n";
+}
+
+print "the odd number are : \n";
+foreach $z (@odd)
+{
+print "$z \n";
+}
+
+print "the size of the even array is $#even \n ";
+print "the size of the even array is $#odd \n";
+
+
+---------------------------------------------------
+#!/usr/bin/perl
+
+@array=qw(1 2 3 4 5 6 7 8 9 10);
+
+foreach $x (@array)
+	{
+
+	if ($x%2!=0)
+	{
+	@odd=(@odd,$x);
+	}
+
+
+
+	while ($n<=$#array){
+	$count=0;
+	for ($i=2;$i<$n;$i++)
+
+	{
+
+	if (($n % $i)==0)
+	{
+	$count++;
+	last ;
+	}
+   
+	}
+
+
+	if ($count==0)
+	{
+	@prime=(@prime,$n)
+	}
+	$n++;
+
+	}
+}
+
+
+
+
+
+
+print "the prime numbers are \n";
+while ($#prime!=0)
+{ 
+$counter=$#prime;
+$var= pop @prime;
+print " $var \n";
+}
+print "the odd numbers are \n";
+while ($#odd!=0)
+{ 
+$counter=$#prime;
+$var= pop @odd;
+print " $var \n";
+}
+
+
+
+-------------------------------------------------------
+
+#!/usr/bin/perl
+
+
+
+$i=2;
+$n=0;
+$x=1;
+while ($n<=1000){
+$count=0;
+	for ($i=2;$i<$n;$i++)
+
+	{
+
+	if (($n % $i)==0)
+	{
+	$count++;
+	last ;
+	}
+   
+	}
+
+
+if ($count==0)
+{
+print "$n \n";}
+
+$n++;
+
+}
+
+
+-----------------------------------------------
+
+
+
+#!/usr/bin/perl
+#8
+
+
+$die1=int(rand(6)+1);
+$die2=int(rand(6)+1);
+$die3=int(rand(6)+1);
+$die4=int(rand(5)+1);
+$die5=int(rand(5)+1);
+$die6=int(rand(5)+1);
+
+$sum=$die1 + $die2 + $die3 + $die4 + $die5;
+print "the sum is " . $sum ;
+
+if ($sum > 20)
+{
+print " you are winner \n" ;
+}
+else 
+{
+print " you lost \n";
+}
+
+if ($sum%2==0)
+{
+print " it is even number\n" ;
+}
+else 
+{
+print "it is odd \n";
+}
+
+
+
+
+-----------------------------------------------------
+
+
+#!/usr/bin/perl
+#9
+
+$d=0;
+$f=0;
+
+opendir (TEMPDIR ,"/home/manal/Desktop/sc")  || die;
+readdir TEMPDIR;
+@filelist=readdir TEMPDIR ;
+closedir ;
+foreach $x (@filelist )
+{
+	if (! grep (^[^.],$x))
+	{
+		if (-d $x)
+		{
+		$d++;
+		}
+			if (-f $x)
+				{
+					$f++;
+				}}
+}
+
+print "the number of file is $f ";
+
+print "the number of file is $d ";
+
+
+---------------------------------------------------------
+
+
+#!/usr/bin/perl
+
+@array=qw(1 2 5 4 3 6 7 8 9 10);
+
+@newlist= sort{ $a <=> $b } @array;
+
+foreach $n (@newlist)
+{
+print "$n \n";
+}
+
+
+for ($i=$#newlist+1 ;$i!=0;$i--){
+print "@newlist[$i]\n";
+
+}
+#in descending we should $b'<=> $a 
+
+----------------------------------------------------------
+
+#!/usr/bin/perl
+#10
+
+
+@records=("album1 , 2000 , artist1", "album2 ,2001 ,artist2","album3 ,2003 ,artist3");
+
+
+
+
+
+
+
+foreach $x (@records)
+{
+($album,$year,$artist)=split(/,/,$x);
+printf "%s %s %s \n",$album,$artist,$year;
+}
+
+
+
+
+---------------------------------
+
+#!/usr/bin/perl
+#11
+
+
+use strict ;
+my $x=3;
+
+sub fun1 
+{
+
+
+
+
+print "$x+@_[0]  ";
+my $x=100; # we put my always to save the value of x without my you allow it to change  
+}
+
+
+fun1(3);
+print $x;
+
+------------------------------------
+
+
+#!/usr/bin/perl
+#12
+
+print "enter the temperature outsid";
+$tempreture=<STDIN>;
+
+$f=(32+$tempreture/5);
+
+if ($f<40)
+
+{
+print "take a coat";
+}
+
+elsif ($f>80)
+{
+print "avoid suburn";
+}
+else { print "it is a great day";}
+
